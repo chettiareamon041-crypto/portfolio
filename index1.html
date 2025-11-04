@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Eamon Chettiar — Portfolio</title>
+  <meta name="description" content="Personal portfolio — projects, skills, contact" />
+
+  <style>
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#7c3aed;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:14px;
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#071021);color:#e6eef8;}
+    a{color:inherit;text-decoration:none}
+
+    .container{max-width:1080px;margin:36px auto;padding:28px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#2dd4bf);display:grid;place-items:center;font-weight:700}
+    .brand h1{font-size:18px;margin:0}
+    nav{display:flex;gap:14px}
+    nav a{padding:8px 12px;border-radius:10px;background:transparent;color:var(--muted);font-size:14px}
+    nav a:hover{background:var(--glass);color:#fff}
+
+    main{display:grid;grid-template-columns:1fr 360px;gap:22px}
+
+    /* Hero / intro */
+    .hero{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:26px;border-radius:var(--radius);backdrop-filter: blur(6px);box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+    .intro{display:flex;gap:20px}
+    .avatar{width:130px;height:130px;border-radius:16px;background:linear-gradient(180deg,#102235,#082033);display:flex;align-items:center;justify-content:center;font-size:40px}
+    .intro h2{margin:0 0 6px 0}
+    .intro p{margin:0;color:var(--muted)}
+    .cta{margin-top:14px;display:flex;gap:10px}
+    .btn{padding:10px 14px;border-radius:12px;font-weight:600;border:0;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#06b6d4);color:#021427}
+    .btn-ghost{background:transparent;border:1px solid var(--glass);color:var(--muted)}
+
+    /* Cards */
+    .card{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));padding:18px;border-radius:14px}
+    .section-title{font-size:13px;color:var(--muted);margin-bottom:12px}
+
+    /* Projects list */
+    .projects{display:grid;gap:12px}
+    .project{display:flex;gap:12px;padding:12px;border-radius:12px;background:var(--glass-2);align-items:center}
+    .project .thumb{width:72px;height:54px;border-radius:8px;background:#071426;display:flex;align-items:center;justify-content:center;font-weight:700}
+    .project h4{margin:0}
+    .project p{margin:6px 0 0 0;color:var(--muted);font-size:13px}
+
+    /* sidebar */
+    aside{position:relative}
+    .profile-card{position:sticky;top:36px;padding:18px}
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{padding:6px 10px;border-radius:999px;background:var(--glass);font-size:13px;color:var(--muted)}
+
+    /* contact */
+    form{display:grid;gap:10px}
+    input,textarea{background:transparent;border:1px solid var(--glass);padding:10px;border-radius:10px;color:inherit}
+    textarea{min-height:120px}
+
+    footer{text-align:center;margin-top:28px;color:var(--muted);font-size:13px}
+
+    /* responsive */
+    @media (max-width:980px){main{grid-template-columns:1fr}aside{order:2}.container{padding:16px}}
+
+    /* subtle animations */
+    .fade-in{animation:fadeIn .7s ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    /* small util */
+    .muted{color:var(--muted)}
+
+    /* accessibility focus styles for keyboard users */
+    body.user-is-tabbing a:focus, body.user-is-tabbing button:focus, body.user-is-tabbing input:focus, body.user-is-tabbing textarea:focus {
+      outline: 3px solid rgba(124,58,237,0.25);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="fade-in">
+      <div class="brand">
+        <div class="logo">YS</div>
+        <div>
+          <h1>Eamon</h1>
+          <div class="muted" style="font-size:13px">Frontend developer • Designer • Problem solver</div>
+        </div>
+      </div>
+      <nav class="fade-in">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a id="themeToggle" href="#">Toggle</a>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <div class="hero card fade-in">
+          <div class="intro">
+            <div class="avatar">YN</div>
+            <div>
+              <h2>Hi — I'm <span id="displayName">Eamon Chettiar</span>.</h2>
+              <p class="muted">I build modern, accessible websites and interactive UI. I focus on clean interfaces, performance and delightful UX.</p>
+
+              <div class="cta">
+                <button class="btn btn-primary" onclick="scrollToSection('projects')">See projects</button>
+                <a class="btn btn-ghost" href="#contact">Get in touch</a>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:18px;display:flex;gap:14px;flex-wrap:wrap">
+            <div class="card" style="flex:1;min-width:220px">
+              <div class="section-title">Latest project</div>
+              <h3 style="margin:0">Minimal e‑commerce UI</h3>
+              <p class="muted" style="margin-top:6px">Design + development of a small product listing with cart and animations.</p>
+            </div>
+            <div class="card" style="width:220px;display:flex;flex-direction:column;justify-content:center">
+              <div class="section-title">Availability</div>
+              <div style="font-weight:700">Student</div>
+              <div class="muted" style="font-size:13px;margin-top:6px">Freelance / Remote</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="projects" class="card" style="margin-top:16px" >
+          <div class="section-title">Projects</div>
+          <div class="projects">
+            <article class="project">
+              <div class="thumb">P1</div>
+              <div>
+                <h4>Portfolio Website</h4>
+                <p>Responsive single-file portfolio with smooth animations and an accessible contact form.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="thumb">P2</div>
+              <div>
+                <h4>Shop UI</h4>
+                <p>Small product listing with cart preview, filters and keyboard-friendly controls.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="thumb">P3</div>
+              <div>
+                <h4>Interactive Map</h4>
+                <p>Map-driven interface with markers, popovers and lazy-loaded data.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div id="about" class="card" style="margin-top:16px">
+          <div class="section-title">About me</div>
+          <p class="muted">I'm a first year computer engineering student at FR.CRCE, quick to learn and adapt. I have keen interest in technology and professional growth. I enjoy collaborating with designers and product teams to deliver value quicly  .</p>
+          <div style="margin-top:12px" class="section-title">Tech & tools</div>
+          <div class="skills">
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">React</div>
+            <div class="skill">Node</div>
+            <div class="skill">Figma</div>
+          </div>
+        </div>
+
+      </section>
+
+      <aside>
+        <div class="profile-card card fade-in">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(90deg,var(--accent),#06b6d4);display:grid;place-items:center">YN</div>
+            <div>
+              <div style="font-weight:700">Eamon Chettiar</div>
+              <div class="muted" style="font-size:13px">Frontend / UI Developer</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div class="section-title">8828917130</div>
+            <div class="muted" style="font-size:13px">chettiareamon041@gmail.com.com</div>
+            <div style="margin-top:8px" class="section-title">Goregaon</div>
+            <div class="muted" style="font-size:13px">Mumbai, India</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div class="section-title">Skills</div>
+            <div class="skills">
+              <div class="skill">Creativity</div>
+              <div class="skill">Communication</div>
+              <div class="skill">Performance</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <div class="section-title">Contact me</div>
+          <form id="contactForm">
+            <input id="nameInput" placeholder="Your name" />
+            <input id="emailInput" placeholder="Your email" />
+            <textarea id="messageInput" placeholder="Message"></textarea>
+            <button type="submit" class="btn btn-primary">Send</button>
+            <div id="formMsg" class="muted" style="margin-top:8px;font-size:13px"></div>
+          </form>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>Made with ♥ — <span id="year"></span> • <span id="footerName">Your Name</span></div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple JS to wire up interactions. Edit freely.
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    // Theme toggle: just demonstrates switching some colors (simple)
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const r = document.documentElement;
+      if(r.style.getPropertyValue('--bg') === 'white'){
+        r.style.setProperty('--bg','#0f1724');
+        r.style.setProperty('--card','#0b1220');
+      } else {
+        r.style.setProperty('--bg','white');
+        r.style.setProperty('--card','#f7f9fc');
+      }
+    });
+
+    // Simple contact form behaviour (no backend) — it validates and shows a message
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('nameInput').value.trim();
+      const email = document.getElementById('emailInput').value.trim();
+      const message = document.getElementById('messageInput').value.trim();
+      const msgEl = document.getElementById('formMsg');
+      if(!name || !email || !message){
+        msgEl.textContent = 'Please fill all fields.';
+        return;
+      }
+      msgEl.textContent = 'Thanks — message captured locally (demo only).';
+      form.reset();
+      setTimeout(()=> msgEl.textContent = '', 3500);
+    });
+
+    // Function for quick customization — call in console: updateProfile({name: 'Eamon', email: 'eamon@example.com'})
+    // FIX: Provide a safe default for the parameter so calling updateProfile() without args won't throw.
+    window.updateProfile = function(profile = {}){
+      // Destructure safely from profile (which defaults to an object)
+      const {name, email, location, tagline} = profile;
+
+      // Update name in header and footer if provided
+      if(name){
+        const display = document.getElementById('displayName');
+        const footer = document.getElementById('footerName');
+        if(display) display.textContent = name;
+        if(footer) footer.textContent = name;
+      }
+
+      // Update contact/email and location inside the .profile-card safely
+      const profileMuted = document.querySelectorAll('.profile-card .muted');
+      // profileMuted[0] -> the small contact/email line
+      // profileMuted[1] -> the location line (as structured in the markup)
+      if(email && profileMuted && profileMuted[0]){
+        profileMuted[0].textContent = email;
+      }
+      if(location && profileMuted && profileMuted[1]){
+        profileMuted[1].textContent = location;
+      }
+
+      // Update tagline in the brand area (the small muted text inside .brand)
+      if(tagline){
+        const brandMuted = document.querySelector('.brand .muted');
+        if(brandMuted) brandMuted.textContent = tagline;
+      }
+
+      // If user calls updateProfile() without args, give a helpful console hint (non-verbose)
+      if(!name && !email && !location && !tagline){
+        // avoid spamming console; only log an informational hint once
+        if(!window._updateProfileWarned){
+          console.info("updateProfile called without data — call like: updateProfile({name:'Eamon', email:'eamon@example.com'})");
+          window._updateProfileWarned = true;
+        }
+      }
+    }
+
+    // Small accessibility improvement: focus outlines for keyboard users
+    (function(){
+      function handleFirstTab(e){
+        if(e.key === 'Tab'){
+          document.body.classList.add('user-is-tabbing');
+          window.removeEventListener('keydown', handleFirstTab);
+        }
+      }
+      window.addEventListener('keydown', handleFirstTab);
+    }());
+
+    // --- Optional: run a small self-test to ensure updateProfile doesn't throw when called without args ---
+    // This helps catch regressions during development. It won't modify the page.
+    try{
+      // call with no args (should be safe now)
+      window.updateProfile();
+      // call with partial data
+      window.updateProfile({name: 'Eamon Chettiar', email: 'eamon@example.com'});
+    } catch (err){
+      // If something unexpected happens, show a console error with guidance
+      console.error('updateProfile self-test failed:', err);
+    }
+  </script>
+</body>
+</html>
